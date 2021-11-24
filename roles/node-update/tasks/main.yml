@@ -1,0 +1,5 @@
+#### perform minor os updates/upgrades
+- include: updates/update-os.yml
+  when: (ansible_facts['os_family'] == 'Debian') or (ansible_facts['os_family'] == 'Rocky')
+
+#### perform major os upgrades (dist-upgrades)

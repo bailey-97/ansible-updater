@@ -1,0 +1,12 @@
+####performs simple package updates
+#[minor-updates]
+
+
+####performs major dist version upgrades if applicable
+#[major-updates]
+
+[update-nodes]
+ubuntu-gw01
+ubuntu-gw02
+ubuntu-osd1
+192.168.250.113

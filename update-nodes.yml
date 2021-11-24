@@ -1,0 +1,6 @@
+---
+#### update nodes
+
+- hosts: update
+  roles:
+  - role: node-update

@@ -1,0 +1,4 @@
+- name: update os
+  package:
+      name: "*"
+      state: latest
