@@ -1,0 +1,4 @@
+- name: update os
+  dnf:
+      name: "*"
+      state: latest
