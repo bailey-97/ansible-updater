@@ -1,12 +1,18 @@
 - name: check rocky linux packages available for update
   dnf:
      list: updates
+  register: upgradable
+
+- name: list upgrade available packages for rocky linux
+  debug:
+    msg: "{{ upgradable }}"
  
-# - name: display count of updates
-#   debug:
-#     msg: "Found {{ updates.stdout_lines | length }} packages to be updated:\n\n{{ updates.stdout }}"
+- name: display count of updates
+  debug:
+    msg: "Found {{ upgradable | length }} packages to be updated:\n\n{{ upgradable }}"
 
 - name: update rocky linux
   dnf:
       name: "*"
       state: latest
+      update_cache: true
