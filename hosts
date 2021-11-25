@@ -1,12 +1,11 @@
 ####performs simple package updates
-#[minor-updates]
 
+#[minor-updates]
+#hostname
+#hostname
+#hostname
+#hostname
 
 ####performs major dist version upgrades if applicable
-#[major-updates]
 
-[update-nodes]
-ubuntu-gw01
-ubuntu-gw02
-ubuntu-osd1
-192.168.250.113
+#[major-updates]

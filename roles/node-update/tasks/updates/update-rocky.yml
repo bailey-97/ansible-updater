@@ -1,4 +1,12 @@
-- name: update os
+- name: check rocky linux packages available for update
+  dnf:
+     list: updates
+ 
+# - name: display count of updates
+#   debug:
+#     msg: "Found {{ updates.stdout_lines | length }} packages to be updated:\n\n{{ updates.stdout }}"
+
+- name: update rocky linux
   dnf:
       name: "*"
       state: latest
