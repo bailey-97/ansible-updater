@@ -1,7 +1,7 @@
 ---
 #### update nodes
 - name: confirm whether user really meant to update servers
-  hosts: all
+  hosts: localhost
   gather_facts: false
 
   vars_prompt:
@@ -14,7 +14,7 @@
   - name: exit playbook if user did not mean to update servers
     fail:
       msg: >
-        "Exiting update-server playbook, servers were NOT updated.
+        "Exiting update-nodes playbook, servers were NOT updated.
          To update servers, either say 'yes' on the prompt or
          or use `-e ireallymeanit=yes` on the command line when
          invoking the playbook"
@@ -22,4 +22,8 @@
 
 - hosts: minor-updates
   roles:
-  - role: node-update
+  - role: minor-updates
+
+- hosts: major-updates
+  roles:
+  - role: major-updates

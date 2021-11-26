@@ -7,7 +7,7 @@
   debug:
     msg: "{{ upgradable }}"
  
-- name: display count of updates
+- name: display count of updates for rocky linux
   debug:
     msg: "Found {{ upgradable | length }} packages to be updated:\n\n{{ upgradable }}"
 
