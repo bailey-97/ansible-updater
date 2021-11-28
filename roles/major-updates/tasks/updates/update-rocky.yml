@@ -38,7 +38,7 @@
   wait_for_connection:
     delay: 60
     timeout: 300
-  when: reboot_yes.rc != 0
+  # when: reboot_yes.rc != 0
 
 # - name: waiting for clean pgs...
 #   # when: rocky_ceph.rc != 0
