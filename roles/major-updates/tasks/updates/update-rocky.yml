@@ -34,12 +34,6 @@
     reboot_timeout: 600
   when: reboot_yes.rc != 0
 
-- name: Wait for system to become reachable again
-  wait_for_connection:
-    delay: 60
-    timeout: 300
-  # when: reboot_yes.rc != 0
-
 # - name: waiting for clean pgs...
 #   # when: rocky_ceph.rc != 0
 #   command: "{{ container_exec_cmd_update_osd|default('') }} ceph --cluster {{ cluster }} pg stat --format json"

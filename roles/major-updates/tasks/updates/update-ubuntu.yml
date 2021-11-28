@@ -27,8 +27,3 @@
   reboot:
     reboot_timeout: 600
   when: reboot_yes.stat.exists
-
-- name: Wait for system to become reachable again
-  wait_for_connection:
-    delay: 60
-    timeout: 300
