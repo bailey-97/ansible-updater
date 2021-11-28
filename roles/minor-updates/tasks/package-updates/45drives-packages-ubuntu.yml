@@ -5,6 +5,7 @@
 - name: check upgrade available packages for ubuntu
   apt:
       upgrade: yes
+      name: "45drives-tools"
   check_mode: true
   register: upgradable
 
@@ -14,16 +15,7 @@
 
 - name: apt upgrade ubuntu
   apt:
-      upgrade: dist
+      upgrade: yes
+      name: "45drives-tools"
       autoremove: yes
       autoclean: yes
-
-- name: check if reboot required for ubuntu
-  stat:
-    path: /var/run/reboot-required
-  register: reboot_yes
-
-- name: rebooting ubuntu
-  reboot:
-    reboot_timeout: 600
-  when: reboot_yes.stat.exists

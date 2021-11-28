@@ -1,0 +1,39 @@
+- name: apt update ubuntu
+  apt:
+      update-cache: yes
+
+- name: check upgrade available packages for ubuntu
+  apt:
+      upgrade: yes
+  check_mode: true
+  register: upgradable
+
+# - name: check ubuntu linux for zfs packages
+#   dnf:
+#     list: "{{ubuntu_zfs}}"
+#   register: ubuntu_zfs
+
+# - name: check ubuntu linux for ceph services and packages 
+#   dnf:
+#     list: "{{ubuntu_ceph}}"
+#   register: ubuntu_ceph
+
+- name: list upgrade available packages for ubuntu
+  debug:
+    msg: "{{ upgradable }}"
+
+- name: apt upgrade ubuntu
+  apt:
+      upgrade: dist
+      autoremove: yes
+      autoclean: yes
+
+- name: check if reboot required for ubuntu
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_yes
+
+- name: rebooting ubuntu
+  reboot:
+    reboot_timeout: 600
+  when: reboot_yes.stat.exists

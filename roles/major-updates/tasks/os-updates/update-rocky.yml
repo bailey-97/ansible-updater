@@ -1,0 +1,35 @@
+- name: check rocky linux packages available for update
+  dnf:
+     list: updates
+  register: upgradable
+
+# - name: check rocky linux for zfs packages
+#   dnf:
+#     list: "{{rocky_zfs}}"
+#   register: rocky_zfs
+
+# - name: check rocky linux for ceph services and packages 
+#   dnf:
+#     list: "{{rocky_ceph}}"
+#   register: rocky_ceph
+
+- name: list upgrade available packages for rocky linux
+  debug:
+    msg: "{{ upgradable }}"
+
+- name: update rocky linux
+  dnf:
+      name: "*"
+      state: latest
+      update_cache: true
+
+- name: check if reboot required for rocky
+  shell: dnf needs-restarting -r
+  failed_when: false
+  register: reboot_yes
+  changed_when: false
+
+- name: rebooting rocky
+  reboot:
+    reboot_timeout: 600
+  when: reboot_yes.rc != 0
