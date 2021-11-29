@@ -9,9 +9,7 @@
 
 - name: update rocky linux
   dnf:
-      name: "45drives-tools"
-      name: "cockpit*"
-      name: "cephgeorep"
+      name: '"45drives-tools" "cockpit*" "cephgeorep"'
       state: latest
       update_only: yes
       update_cache: yes
