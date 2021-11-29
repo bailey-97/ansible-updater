@@ -11,6 +11,6 @@
 - name: update ubuntu
   apt:
       name: "ceph*"
-      only_upgrade: yes
       state: latest
-      update_cache: true
+      only_upgrade: yes
+      update_cache: yes
