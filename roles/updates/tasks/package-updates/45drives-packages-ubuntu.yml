@@ -1,19 +1,17 @@
-- name: apt update ubuntu
-  apt:
-      update-cache: yes
-
-- name: check upgrade available packages for ubuntu
+- name: check ubuntu 45drives packages available for update
   apt:
       upgrade: yes
       name: "45drives-tools"
   check_mode: true
+  only_upgrade: yes
+  update_cache: yes
   register: upgradable
 
-- name: list upgrade available packages for ubuntu
+- name: list upgrade available packages for ubuntu 45drives
   debug:
     msg: "{{ upgradable }}"
 
-- name: apt upgrade ubuntu
+- name: upgrade ubuntu 45drives
   apt:
       upgrade: yes
       name: "45drives-tools"

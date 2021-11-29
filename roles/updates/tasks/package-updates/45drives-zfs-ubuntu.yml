@@ -6,9 +6,8 @@
   only_upgrade: yes
   update_cache: yes
   register: upgradable
-  register: upgradable
 
-- name: list upgrade available packages for rocky linux
+- name: list upgrade available packages for ubuntu zfs
   debug:
     msg: "{{ upgradable }}"
 

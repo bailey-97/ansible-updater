@@ -3,11 +3,11 @@
       list: "ceph*"
   register: upgradable
 
-- name: list upgrade available packages for rocky linux
+- name: list upgrade available packages for rocky linux ceph
   debug:
     msg: "{{ upgradable }}"
 
-- name: update rocky linux
+- name: update rocky linux ceph
   dnf:
       name: "ceph*"
       state: latest

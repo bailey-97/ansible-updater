@@ -3,7 +3,7 @@
       list: "zfs"
   register: upgradable
 
-- name: list upgrade available packages for rocky linux
+- name: list upgrade available packages for rocky linux zfs
   debug:
     msg: "{{ upgradable }}"
 
