@@ -1,3 +1,11 @@
 ---
-#placeholder for vars
-#perform_reboot: true
+# placeholder for vars
+
+# type of updates to perform if applicable packages are found
+
+ zfs_updates: false
+ houston_updates: false
+ ceph_updates: false
+
+# if reboot required set to enable playbook to automatically reboot node at a time
+ perform_reboot: true

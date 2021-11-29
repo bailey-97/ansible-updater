@@ -1,0 +1,16 @@
+- name: check ubuntu linux ceph packages available for update
+  apt:
+      list: updates
+      name: "ceph*"
+  register: upgradable
+
+- name: list upgrade available packages for rocky linux
+  debug:
+    msg: "{{ upgradable }}"
+
+- name: update ubuntu
+  apt:
+      name: "ceph*"
+      only_upgrade: yes
+      state: latest
+      update_cache: true

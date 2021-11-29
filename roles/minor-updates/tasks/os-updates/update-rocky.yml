@@ -14,5 +14,19 @@
 - name: update rocky linux
   dnf:
       name: "*"
+      exclude: "zfs","ceph*"
       state: latest
       update_cache: true
+
+when: reboot_required == "true"
+block:
+- name: check if reboot required for rocky
+  shell: dnf needs-restarting -r
+  failed_when: false
+  register: reboot_yes
+  changed_when: false
+
+- name: rebooting rocky
+  reboot:
+    reboot_timeout: 600
+  when: reboot_yes.rc != 0

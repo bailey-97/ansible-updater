@@ -4,10 +4,6 @@
       name: "45drives-tools"
       name: "cockpit*"
       name: "cephgeorep"
-      # name:
-      # name:
-      # name:
-      # name:
   register: upgradable
 
 - name: list upgrade available packages for rocky linux
@@ -20,4 +16,5 @@
       name: "cockpit*"
       name: "cephgeorep"
       state: latest
-      update_cache: true
+      update_only: yes
+      update_cache: yes

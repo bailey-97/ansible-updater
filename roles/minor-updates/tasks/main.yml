@@ -1,6 +1,33 @@
 #### perform minor os updates/upgrades
-- include: updates/update-ubuntu.yml
+- include: os-updates/update-ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
 
-- include: updates/update-rocky.yml
+- include: os-updates/update-rocky.yml
+  when: ansible_distribution == 'Rocky'
+
+## performs upgrades of zfs packages
+
+when: "{{ zfs_updates }}" == true
+- include: package-updates/45drives-zfs-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include: package-updates/45drives-zfs-rocky.yml
+  when: ansible_distribution == 'Rocky'
+
+## performs upgrades of ceph packages
+
+when: "{{ ceph_updates }}" == true
+- include: package-updates/45drives-ceph-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include: package-updates/45drives-ceph-rocky.yml
+  when: ansible_distribution == 'Rocky'
+
+## performs upgrades of 45drives packages
+
+when: "{{ 45drives_updates }}" == true
+- include: package-updates/45drives-packages-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include: package-updates/45drives-packages-rocky.yml
   when: ansible_distribution == 'Rocky'

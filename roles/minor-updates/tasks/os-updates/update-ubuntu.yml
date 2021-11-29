@@ -17,3 +17,15 @@
       upgrade: yes
       autoremove: yes
       autoclean: yes
+
+when: reboot_required == "true"
+block:
+- name: check if reboot required for ubuntu
+  stat:
+    path: /var/run/reboot-required
+  register: reboot_yes
+
+- name: rebooting ubuntu
+  reboot:
+    reboot_timeout: 600
+  when: reboot_yes.stat.exists
