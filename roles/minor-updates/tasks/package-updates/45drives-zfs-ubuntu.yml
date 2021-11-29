@@ -20,3 +20,5 @@
       state: latest
       only_upgrade: yes
       update_cache: yes
+      autoremove: yes
+      autoclean: yes

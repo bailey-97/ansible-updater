@@ -1,9 +1,6 @@
 - name: check rocky linux packages available for update
   dnf:
-      list: updates
-      name: "45drives-tools"
-      name: "cockpit*"
-      name: "cephgeorep"
+      list: '"45drives-tools" "cockpit*" "cephgeorep"'
   register: upgradable
 
 - name: list upgrade available packages for rocky linux

@@ -24,6 +24,6 @@
   roles:
   - role: minor-updates
 
-- hosts: major-updates
-  roles:
-  - role: major-updates
+# - hosts: major-updates
+#   roles:
+#   - role: major-updates

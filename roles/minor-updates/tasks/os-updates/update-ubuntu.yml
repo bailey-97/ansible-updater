@@ -18,8 +18,6 @@
       autoremove: yes
       autoclean: yes
 
-when: reboot_required == "true"
-block:
 - name: check if reboot required for ubuntu
   stat:
     path: /var/run/reboot-required
@@ -28,4 +26,4 @@ block:
 - name: rebooting ubuntu
   reboot:
     reboot_timeout: 600
-  when: reboot_yes.stat.exists
+  when: (reboot_yes.stat.exists) and (perform_reboot == true)

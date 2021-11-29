@@ -1,6 +1,0 @@
-#### perform major os updates/upgrades
-- include: os-updates/update-ubuntu.yml
-  when: ansible_distribution == 'Ubuntu'
-
-- include: os-updates/update-rocky.yml
-  when: ansible_distribution == 'Rocky'

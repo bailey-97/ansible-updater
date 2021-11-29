@@ -17,5 +17,7 @@
   apt:
       upgrade: yes
       name: "45drives-tools"
+      only_upgrade: yes
+      update_cache: yes
       autoremove: yes
       autoclean: yes

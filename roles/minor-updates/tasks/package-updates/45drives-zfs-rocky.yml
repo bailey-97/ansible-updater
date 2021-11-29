@@ -1,7 +1,6 @@
 - name: check rocky linux zfs packages available for update
   dnf:
-      list: updates
-      name: "zfs"
+      list: "zfs"
   register: upgradable
 
 - name: list upgrade available packages for rocky linux

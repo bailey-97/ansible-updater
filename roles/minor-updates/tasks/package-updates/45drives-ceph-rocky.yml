@@ -1,7 +1,6 @@
 - name: check rocky linux ceph packages available for update
   dnf:
-      list: updates
-      name: "ceph*"
+      list: "ceph*"
   register: upgradable
 
 - name: list upgrade available packages for rocky linux
