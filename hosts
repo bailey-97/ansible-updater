@@ -1,14 +1,6 @@
-##performs simple package updates
+##performs package and os updates
 
-#[minor-updates]
-#hostname
-#hostname
-#hostname
-#hostname
-
-##performs major dist version upgrades if applicable and reboots if required
-
-#[major-updates]
+#[updates]
 #hostname
 #hostname
 #hostname

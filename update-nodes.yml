@@ -20,10 +20,6 @@
          invoking the playbook"
     when: (ireallymeanit|lower != 'yes') and (ireallymeanit|lower != 'y')
 
-- hosts: minor-updates
+- hosts: updates
   roles:
-  - role: minor-updates
-
-# - hosts: major-updates
-#   roles:
-#   - role: major-updates
+  - role: updates
