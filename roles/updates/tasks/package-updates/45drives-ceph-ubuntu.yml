@@ -1,7 +1,10 @@
 - name: check ubuntu linux ceph packages available for update
   apt:
-      list: updates
+      upgrade: yes
       name: "ceph*"
+  check_mode: true
+  only_upgrade: yes
+  update_cache: yes
   register: upgradable
 
 - name: list upgrade available packages for rocky linux
