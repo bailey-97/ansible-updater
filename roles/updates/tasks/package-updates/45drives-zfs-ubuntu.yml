@@ -1,10 +1,13 @@
 - name: check ubuntu zfs packages available for update
   apt:
-      upgrade: yes
-      name: '"zfs" "zfsutils-linux" "libzfs2linux" "libzfslinux-dev"'
+      name:
+        - "zfs-dkms"
+        - "zfsutils-linux"
+        - "libzfs2linux"
+        - "zfs-zed"
+      only_upgrade: yes
+      update_cache: yes
   check_mode: true
-  only_upgrade: yes
-  update_cache: yes
   register: upgradable
 
 - name: list upgrade available packages for ubuntu zfs
@@ -13,7 +16,11 @@
 
 - name: update ubuntu zfs
   apt:
-      name: '"zfs" "zfsutils-linux" "libzfs2linux" "libzfslinux-dev"'
+      name:
+        - "zfs-dkms"
+        - "zfsutils-linux"
+        - "libzfs2linux"
+        - "zfs-zed"
       state: latest
       only_upgrade: yes
       update_cache: yes

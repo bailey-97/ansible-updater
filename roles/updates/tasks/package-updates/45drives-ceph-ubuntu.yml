@@ -1,10 +1,9 @@
 - name: check ubuntu ceph packages available for update
   apt:
-      upgrade: yes
       name: "ceph*"
+      only_upgrade: yes
+      update_cache: yes
   check_mode: true
-  only_upgrade: yes
-  update_cache: yes
   register: upgradable
 
 - name: list upgrade available packages for ubuntu ceph
