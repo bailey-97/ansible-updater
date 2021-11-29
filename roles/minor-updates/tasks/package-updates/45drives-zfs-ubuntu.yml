@@ -1,10 +1,7 @@
 - name: check ubuntu zfs packages available for update
   apt:
       list: updates
-      name: "zfs"
-      name: "zfsutils-linux"
-      name: "libzfs2linux"
-      name: "libzfslinux-dev"
+      name: '"zfs" "zfsutils-linux" "libzfs2linux" "libzfslinux-dev"'
   register: upgradable
 
 - name: list upgrade available packages for rocky linux
@@ -13,10 +10,7 @@
 
 - name: update ubuntu zfs
   apt:
-      name: "zfs"
-      name: "zfsutils-linux"
-      name: "libzfs2linux"
-      name: "libzfslinux-dev"
+      name: '"zfs" "zfsutils-linux" "libzfs2linux" "libzfslinux-dev"'
       state: latest
       only_upgrade: yes
       update_cache: yes
