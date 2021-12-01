@@ -5,6 +5,7 @@
         - "zfsutils-linux"
         - "libzfs2linux"
         - "zfs-zed"
+      state: latest
       only_upgrade: yes
       update_cache: yes
   check_mode: true

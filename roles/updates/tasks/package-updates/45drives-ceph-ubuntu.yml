@@ -1,6 +1,9 @@
 - name: check ubuntu ceph packages available for update
   apt:
-      name: "ceph*"
+      name: 
+        - "ceph"
+        - "ceph*"
+      state: latest
       only_upgrade: yes
       update_cache: yes
   check_mode: true
@@ -12,9 +15,11 @@
 
 - name: update ubuntu ceph
   apt:
-      name: "ceph*"
+      name: 
+        - "ceph"
+        - "ceph*"
       state: latest
       only_upgrade: yes
       update_cache: yes
       autoremove: yes
-      autoclean: yes
+      autoclean: yes   

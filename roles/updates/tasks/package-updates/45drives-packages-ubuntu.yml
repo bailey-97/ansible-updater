@@ -1,6 +1,10 @@
 - name: check ubuntu 45drives packages available for update
   apt:
-      name: "45drives-tools"
+      name: 
+        - "45drives-tools"
+        - "cockpit*"
+        - "cephgeorep"
+      state: latest
       only_upgrade: yes
       update_cache: yes
   check_mode: true
@@ -12,7 +16,10 @@
 
 - name: upgrade ubuntu 45drives
   apt:
-      name: "45drives-tools"
+      name: 
+        - "45drives-tools"
+        - "cockpit*"
+        - "cephgeorep"
       state: latest
       only_upgrade: yes
       update_cache: yes

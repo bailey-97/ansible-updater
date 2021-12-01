@@ -1,10 +1,10 @@
-- name: apt update ubuntu
-  apt:
-      update-cache: yes
-
 - name: check upgrade available packages for ubuntu
   apt:
-      upgrade: yes
+      name: "*"
+      state: latest
+      update-cache: yes
+      autoremove: yes
+      autoclean: yes
   check_mode: true
   register: upgradable
 
@@ -12,9 +12,38 @@
   debug:
     msg: "{{ upgradable }}"
 
-- name: apt upgrade ubuntu
+- name: hold ceph/zfs/45drives packages back from apt update apt upgrade
+  dpkg_selections:
+      name: ceph*
+      selection: hold
+  dpkg_selections:
+      name: zfs-dkms
+      selection: hold
+  dpkg_selections:
+      name: zfsutils-linux
+      selection: hold
+  dpkg_selections:
+      name: libzfs2linux
+      selection: hold
+  dpkg_selections:
+      name: zfs-zed
+      selection: hold
+  dpkg_selections:
+      name: 45drives-tools
+      selection: hold
+  dpkg_selections:
+      name: cockpit*
+      selection: hold
+  dpkg_selections:
+      name: cephgeorep
+      selection: hold
+  
+
+- name: apt update apt upgrade ubuntu
   apt:
-      upgrade: yes
+      name: "*"
+      state: latest
+      update-cache: yes
       autoremove: yes
       autoclean: yes
 
